@@ -17,4 +17,11 @@ export default defineConfig({
             },
         }),
     ],
+    server: {
+        https: {
+            key: "/Users/sebastian/.config/valet/Certificates/cluedo.test.key",
+            cert: "/Users/sebastian/.config/valet/Certificates/cluedo.test.crt"
+        },
+        host: 'cluedo.test',
+    },
 });

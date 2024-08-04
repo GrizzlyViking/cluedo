@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SheetController;
+use App\Models\Clue;
+use App\Models\Game;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,8 +18,19 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $game = Game::get()->first();
+
+    $sheet = $game->clues->filter(function ($clue) {
+        return $clue->user_id == auth()->id();
+    })->groupBy(function (Clue $clue) {
+        return $clue->element->cardType();
+    });
+
+    return Inertia::render('Dashboard', compact('game', 'sheet'));
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/sheet', [SheetController::class, 'show'])->middleware(['auth', 'verified'])->name('sheet.show');
+Route::post('/sheet/{clue}', [SheetController::class, 'update'])->middleware(['auth', 'verified'])->name('clue.update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
