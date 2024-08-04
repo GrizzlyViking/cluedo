@@ -17,15 +17,12 @@ class DatabaseSeeder extends Seeder
         User::factory()->createMany([[
             'name' => 'Papa',
             'email' => 'sebastian@schlossberg-edelmann.com',
-            'password' => bcrypt('gokqaq-jegdy7-fadwoC'),
         ], [
             'name' => 'Mummy',
             'email' => 'natalia@schlossberg-edelmann.com',
-            'password' => bcrypt('bamby'),
         ], [
             'name' => 'Livia',
             'email' => 'livia@schlossberg-edelmann.com',
-            'password' => bcrypt('PinPon2017'),
         ]]);
 
         $this->call([
