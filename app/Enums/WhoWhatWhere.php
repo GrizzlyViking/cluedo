@@ -8,7 +8,7 @@ enum WhoWhatWhere: string
 {
     // WHO
     case green = 'Green';
-    case mustard = 'Mudstard';
+    case mustard = 'Mustard';
     case peacock = 'Peacock';
     case plum = 'Plum';
     case scarlett = 'Scarlett';
