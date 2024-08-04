@@ -31,6 +31,7 @@ class reset extends Command
     public function handle()
     {
         $game = Game::first();
+        $game->participants()->detach();
         $game->participants()->attach(User::all());
 
         $sheet = new Sheet($game);
