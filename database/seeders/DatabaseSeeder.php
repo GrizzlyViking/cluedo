@@ -24,9 +24,5 @@ class DatabaseSeeder extends Seeder
             'name' => 'Livia',
             'email' => 'livia@schlossberg-edelmann.com',
         ]]);
-
-        $this->call([
-            SheetSeeder::class,
-        ]);
     }
 }
